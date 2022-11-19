@@ -13,6 +13,7 @@ const Auth = () => {
         <View>
           <Text style={tailwind('text-center text-gray-800 text-2xl font-bold mb-2')}>Вход</Text>
         </View>
+        <View></View>
         <TextInput style={styles.input} placeholder='ИНН'/>
         <TextInput style={styles.input} placeholder='Пароль'/>
         <Button title="Войти" style={styles.button}></Button>
