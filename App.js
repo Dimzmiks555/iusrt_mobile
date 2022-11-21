@@ -1,9 +1,10 @@
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import {TailwindProvider } from 'tailwind-rn';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Auth from './app/components/screens/Auth/Auth';
-import utilities from './tailwind.json';
+import Navigation from './app/navigation/Navigation';
+import AuthProvider from './app/providers/AuthProvider';
 export default function App() {
 
   const [fontsLoaded] = useFonts({
@@ -12,9 +13,12 @@ export default function App() {
 
 
   return (
-      <TailwindProvider utilities={utilities}>
-        <Auth/>
-      </TailwindProvider>
+    <AuthProvider>
+      <SafeAreaProvider>
+        <Navigation/>
+      </SafeAreaProvider>
+    </AuthProvider>
+    // <View></View>
   );
 }
 

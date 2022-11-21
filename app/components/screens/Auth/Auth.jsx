@@ -1,38 +1,36 @@
-import React from 'react'
-import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native'
-import { useTailwind } from 'tailwind-rn'
+import { useNavigation } from '@react-navigation/native'
+import React, { useState } from 'react'
+import { Button, Image, Keyboard, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native'
 
 
 const Auth = () => {
 
-  const tailwind = useTailwind()
+
+  const [inn, setInn] = useState('')
+  const [password, setPassword] = useState('')
+
+  const navigator = useNavigation()
 
   return (
-    <View style={styles.container}>
-        {/* <Image source={require("../../../assets/images/LOGO.png")} style={styles.ImageBackground}/> */}
-        <View>
-          <Text style={tailwind('text-center text-gray-800 text-2xl font-bold mb-2')}>Вход</Text>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
+        <View className="p-5 items-center justify-center bg-white h-full" >
+          <Image className="w-30 h-36 object-contain mb-10" source={require("../../../../assets/images/LOGO.png")} style={styles.ImageBackground}/>
+          {/* <View>
+            <Text className="text-center text-gray-700 text-3xl font-bold mb-4">БУХГАЛТЕРИЯ</Text>
+          </View> */}
+          <TextInput onChangeText={setInn} keyboardType="phone-pad" className="text-gray-800 border-gray-400 bg-gray-100 border py-2 px-4 rounded-lg w-60 mb-3 text-md" placeholder='ИНН'/>
+          <TextInput onChangeText={setPassword} secureTextEntry={true} className="border-gray-400 bg-gray-100 border py-2 px-4 rounded-lg w-60 mb-4 text-md" placeholder='Пароль'/>
+          <TouchableOpacity disabled={!inn  || !password } className={`w-60 mb-4 justify-center text-center ${!!inn && !!password ? 'bg-violet-700' : 'bg-gray-500'} p-2 rounded-lg`}>
+            <Text className="text-center text-white text-lg">Войти</Text>
+          </TouchableOpacity>
         </View>
-        <View></View>
-        <TextInput style={styles.input} placeholder='ИНН'/>
-        <TextInput style={styles.input} placeholder='Пароль'/>
-        <Button title="Войти" style={styles.button}></Button>
-    </View>
+    </TouchableWithoutFeedback>
   )
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: 40
-    },
     ImageBackground: {
         resizeMode: "contain",
-        width: 200,
-        height: 200,
     },
 });
 
