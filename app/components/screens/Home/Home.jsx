@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <Layout>
       <ScrollView showsVerticalScrollIndicator={false}>
-          <Text className="text-2xl font-bold mb-4">Главная</Text>
+          <Text className="text-2xl font-bold mb-4">Личный кабинет</Text>
           <Information/>
           <Bills/>
           <Documents/>
